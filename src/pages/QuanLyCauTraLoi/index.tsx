@@ -4,7 +4,7 @@ import TableBase from '@/components/Table';
 import type { IAnwserRecord } from '@/models/answer';
 import { IColumn } from '@/utils/interfaces';
 import { DeleteOutlined, EditOutlined, EyeOutlined } from '@ant-design/icons';
-import { Button, Card, Divider, Popconfirm } from 'antd';
+import { Button, Card, Divider, Popconfirm, Image } from 'antd';
 import React from 'react';
 import { useModel, history } from 'umi';
 import FormAnwser from './FormCauTraLoi';
@@ -23,9 +23,15 @@ const Index = () => {
   };
 
   const handleDel = async (record: IAnwserRecord) => {
-    await answerModel.del(record?.id_answer ?? '').then(() => {
-      answerModel.getData({ intent_id: IntentId });
-    });
+    if (record?.type_answer === 'image') {
+      await answerModel.delWithImage(record?.id_answer ?? '').then(() => {
+        answerModel.getData({ intent_id: IntentId });
+      });
+    } else {
+      await answerModel.del(record?.id_answer ?? '').then(() => {
+        answerModel.getData({ intent_id: IntentId });
+      });
+    }
   };
 
   const renderLast = (value: any, record: IAnwserRecord) => (
@@ -77,11 +83,16 @@ const Index = () => {
       align: 'left',
       render: (value: any, record: any) => {
         return (
-          <Card title={value} bordered={false}>
+          <Card title={value} bordered={false} style={{ width: 'max-content', padding: 0 }}>
             {record?.type_answer === 'text' ? (
               <p>{record?.answer}</p>
             ) : (
-              <img src={`${ip.slice(0, ip.length - 4)}${record?.image}`} alt="ảnh" width="100%" />
+              <Image
+                width={200}
+                height={200}
+                src={`${ip}${record?.image}`}
+                style={{ objectFit: 'contain' }}
+              />
             )}
           </Card>
         );

@@ -118,8 +118,13 @@ const FormAnswer = () => {
             ...(answerModel?.record ?? {}),
           }}
         >
-          <Form.Item label="Chủ đề" name="answer_id">
-            <Input placeholder="Mã chủ đề" name="answer_id" defaultValue={IntentId} disabled />
+          <Form.Item label="Mã câu hỏi" name="answer_id" hidden={true}>
+            <Input
+              placeholder="Mã câu hỏi"
+              name="answer_id"
+              defaultValue={answerModel?.record?.id ?? ''}
+              disabled
+            />
           </Form.Item>
           <Form.Item label="Thứ tự" name="sort">
             <Input

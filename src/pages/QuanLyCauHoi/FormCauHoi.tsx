@@ -91,8 +91,13 @@ const FormQuestion = () => {
               ...(questionModel?.record ?? {}),
             }}
           >
-            <Form.Item label="Chủ đề" name="question_id">
-              <Input placeholder="Mã chủ đề" name="question_id" defaultValue={IntentId} disabled />
+            <Form.Item label="Mã câu hỏi" name="question_id" hidden={true}>
+              <Input
+                placeholder="Mã câu hỏi"
+                name="question_id"
+                defaultValue={questionModel?.record?.id ?? ''}
+                disabled
+              />
             </Form.Item>
             <Form.Item label="Câu hỏi" name="question">
               <Input placeholder="Nhập câu hỏi" name="question" />
@@ -117,14 +122,6 @@ const FormQuestion = () => {
                   ...(questionModel?.record ?? {}),
                 }}
               >
-                <Form.Item label="Chủ đề" name="question_id">
-                  <Input
-                    placeholder="Mã chủ đề"
-                    name="question_id"
-                    defaultValue={IntentId}
-                    disabled
-                  />
-                </Form.Item>
                 <Form.Item label="Câu hỏi" name="question">
                   <Input placeholder="Nhập câu hỏi" name="question" />
                 </Form.Item>

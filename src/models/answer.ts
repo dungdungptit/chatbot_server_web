@@ -159,6 +159,19 @@ export default () => {
       setLoading(false);
     }
   };
+  const delWithImage = async (id: string, intent_id: string) => {
+    try {
+      setLoading(true);
+      const res = await answer.delWithImage(id);
+      if (res.status === 200) {
+        message.success('Xóa thành công');
+      }
+    } catch (error) {
+      message.error('Lỗi thực hiện');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return {
     answer,
@@ -198,6 +211,7 @@ export default () => {
     del,
     isImage,
     setIsImage,
-    addFile
+    addFile,
+    delWithImage
   };
 };

@@ -25,6 +25,9 @@ class Answer<T> {
   del = async (id: string) => {
     return axios.delete(`${ip}/${this.url}`, { params: { id } });
   };
+  delWithImage = async (id: string) => {
+    return axios.delete(`${ip}/files/images`, { params: { id } });
+  };
 
   get = async (payload: IPayload) => {
     // console.log(payload);
