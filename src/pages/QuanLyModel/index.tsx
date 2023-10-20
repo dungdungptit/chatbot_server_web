@@ -140,7 +140,7 @@ const Index = () => {
         >
           {modelModel.loadingTrain ? 'Đang tạo mô hình mới' : 'Đào tạo mô hình mới'}
         </Button>
-        {modelModel.isClickTrain && (
+        {/* {modelModel.isClickTrain && (
           <>
             <Progress
               percent={modelModel.percent}
@@ -148,7 +148,7 @@ const Index = () => {
               style={{ marginTop: 10 }}
             />
           </>
-        )}
+        )} */}
       </Card>
       <TableBase
         modelName={'model'}
