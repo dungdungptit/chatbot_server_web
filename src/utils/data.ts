@@ -21,6 +21,8 @@ const data: any = {
     ThiSinh: '/phuongthucxettuyen',
     QuanTriVien: '/thongkebaocao/tuyensinh',
     Admin: '/intent',
+    User: '/intent',
+    Staff: '/intent',
   },
   doiTuong: ['Vai trò', 'Tất cả'],
   vaiTro: [

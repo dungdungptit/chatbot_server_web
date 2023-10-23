@@ -135,7 +135,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
     rightContentRender: () => <RightContent marginTopGioiThieuChung={17} />,
     disableContentMargin: false,
     waterMarkProps: {
-      content: initialState?.currentUser?.ten,
+      content: initialState?.currentUser?.username,
     },
     // headerRender: (props, dom) => <div style={{ backgroundColor: '#CC0D00' }}>{dom}</div>,
     isMobile: true,
@@ -151,6 +151,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
           (vaiTro == ESystemRole.User || vaiTro == ESystemRole.Admin) &&
           location.pathname === loginPath
         ) {
+          console.log('vaiTro', data.path[`${vaiTro || initialState?.currentUser?.systemRole}`]);
           history.push(data.path[`${vaiTro || initialState?.currentUser?.systemRole}`]);
         } else {
           history.push(location.pathname);
