@@ -88,7 +88,7 @@ const TreeMenus = (props) => {
     return tmpArr;
   };
   const data = renderData('NULL');
-  console.log(props, 'data');
+  // console.log(props, 'data');
   return (
     <Table
       bordered

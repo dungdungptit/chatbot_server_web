@@ -87,7 +87,7 @@ export default defineConfig({
       icon: 'FieldStringOutlined',
       component: './QuanLyIntent',
       maChucNang: 'QUAN_LI_Intent',
-      access: 'permisionMenu',
+      access: 'CHU_DE',
     },
     {
       path: '/intent/:id',
@@ -104,13 +104,13 @@ export default defineConfig({
       icon: 'DesktopOutlined',
       component: './QuanLyModel',
       maChucNang: 'QUAN_LI_MODEL',
-      access: 'permisionMenu',
+      access: 'MO_HINH',
     },
     {
       path: '/users',
       name: 'quanlinguoidung',
       maChucNang: 'QUAN_LY_NGUOI_DUNG',
-      access: 'permisionMenu',
+      access: 'QUAN_LI_NGUOI_DUNG',
       icon: 'UnorderedListOutlined',
       routes: [
         {
@@ -119,7 +119,7 @@ export default defineConfig({
           icon: 'UnorderedListOutlined',
           // maChucNang: 'DANH_SACH_NGUOI_DUNG',
           component: './QuanLyNguoiDung',
-          access: 'adminVaStaff',
+          access: 'NGUOI_DUNG',
         },
         {
           path: './danh-sach-nhom-nguoi-dung',
@@ -127,7 +127,7 @@ export default defineConfig({
           icon: 'UnorderedListOutlined',
           // maChucNang: 'DANH_SACH_NHOM_NGUOI_DUNG',
           component: './QuanLyNhomNguoiDung',
-          access: 'admin',
+          access: 'NHOM_NGUOI_DUNG',
         },
         {
           path: './bang-menu',
@@ -135,7 +135,7 @@ export default defineConfig({
           // maChucNang: 'MENU',
           icon: 'UnorderedListOutlined',
           component: './QuanLyMenu',
-          access: 'admin',
+          access: 'MENU',
         },
 
       ],

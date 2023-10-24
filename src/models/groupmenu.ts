@@ -2,7 +2,7 @@ import { message } from 'antd';
 // import Service from '@/pages/QuanLyNguoiDung/service';
 import { ActionType } from '@ant-design/pro-table';
 import { useRef, useState } from 'react';
-import groups from '@/services/Groups/groups';
+import groupmenu from '@/services/Groups/groupmenu';
 // import baseModel from './baseModel';
 
 export interface IGroupRecord {
@@ -13,6 +13,8 @@ export interface IGroupRecord {
 
 export default () => {
   const [danhSach, setDanhSach] = useState<IGroupRecord[]>([]);
+  const [groupsList, setGroupsList] = useState<any[]>([]);
+  const [menusList, setMenusList] = useState<any[]>([]);
   const [showDrawer, setShowDrawer] = useState(false);
   const [edit, setEdit] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -31,36 +33,15 @@ export default () => {
     try {
       setLoading(true);
       // console.log(page, limit, condition);
-      const res = await groups.get({
+      const res = await groupmenu.getDataGroupMenu({
         page,
         limit,
         ...condition,
       });
       if (res.status === 200) {
-        setDanhSach(res.data);
-        setTotal(res.data?.length || 0);
-      }
-    } catch (error) {
-      setDanhSach([]);
-      setTotal(0);
-      message.error('Lỗi thực hiện');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const getDataGroupMenu = async () => {
-    try {
-      setLoading(true);
-      console.log(page, limit, condition);
-      const res = await groups.getDataGroupMenu({
-        page,
-        limit,
-        ...condition,
-      });
-      if (res.status === 200) {
-        setDanhSach(res.data);
-        setTotal(res.data?.length || 0);
+        setGroupsList(res.data?.groups);
+        setMenusList(res.data?.menus);
+        setTotal(res.data?.menu?.length || 0);
       }
     } catch (error) {
       setDanhSach([]);
@@ -74,7 +55,7 @@ export default () => {
   const add = async (data: any) => {
     try {
       setLoading(true);
-      const res = await groups.add(data);
+      const res = await groupmenu.add(data);
       if (res.status === 201) {
         message.success('Thêm mới thành công');
         setVisibleForm(false);
@@ -90,7 +71,7 @@ export default () => {
   const upd = async (data: any) => {
     try {
       setLoading(true);
-      const res = await groups.upd(data);
+      const res = await groupmenu.upd(data);
       if (res.status === 200) {
         message.success('Cập nhật thành công');
         setVisibleForm(false);
@@ -106,7 +87,7 @@ export default () => {
   const del = async (id: string) => {
     try {
       setLoading(true);
-      const res = await groups.del(id);
+      const res = await groupmenu.del(id);
       if (res.status === 200) {
         message.success('Xóa thành công');
         getData();
@@ -119,7 +100,7 @@ export default () => {
   };
 
   return {
-    groups,
+    groupmenu,
 
     condition,
     danhSach,
@@ -150,6 +131,9 @@ export default () => {
     add,
     upd,
     del,
-    getDataGroupMenu,
+    groupsList,
+    menusList,
+    setGroupsList,
+    setMenusList,
   };
 };

@@ -31,6 +31,7 @@ export async function getInitialState(): Promise<{
   currentUser?: {
     username: string;
     systemRole: string;
+    menus: [];
   };
   partner_id?: number;
   fetchUserInfo?: () => Promise<{ data: { data: Login.User } } | undefined>;

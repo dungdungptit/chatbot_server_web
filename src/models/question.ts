@@ -96,6 +96,21 @@ export default () => {
       setLoading(false);
     }
   };
+  const addFileQuestion = async (data: any) => {
+    try {
+      setLoading(true);
+      const res = await question.addFileQuestion(data);
+      console.log(res);
+      if (res.status === 200) {
+        message.success('Thêm mới thành công');
+        setVisibleForm(false);
+      }
+    } catch (error) {
+      message.error('Lỗi thực hiện');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const upd = async (data: any) => {
     try {
@@ -161,5 +176,6 @@ export default () => {
     upd,
     del,
     addFile,
+    addFileQuestion,
   };
 };

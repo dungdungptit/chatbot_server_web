@@ -17,6 +17,7 @@ const tailLayout = {
 const FormGroup = () => {
   const [form] = Form.useForm();
   const groupsModel = useModel('groups');
+  const groupmenuModel = useModel('groupmenu');
   const menusModel = useModel('menus');
   useEffect(() => {
     menusModel.getData();
@@ -29,14 +30,17 @@ const FormGroup = () => {
           ...values,
           id: groupsModel?.record?.id,
         });
+        await groupmenuModel.getData();
       } else {
         await groupsModel.add(values);
+        await groupmenuModel.getData();
       }
     } else {
       await groupsModel.add(values);
+      await groupmenuModel.getData();
     }
   };
-  console.log(form.getFieldsValue(), 'form.getFieldValue()');
+  // console.log(form.getFieldsValue(), 'form.getFieldValue()');
   return (
     <Spin spinning={groupsModel.loading}>
       <Card title={groupsModel.edit ? 'Chỉnh sửa' : 'Thêm mới'}>

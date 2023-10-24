@@ -66,16 +66,16 @@ const Index = () => {
       width: 80,
       align: 'center',
     },
-    {
-      title: 'Mã chủ đề',
-      dataIndex: 'intent_name',
-      notRegex: true,
-      width: 200,
-      align: 'left',
-      // render: (value: any, record: IIntentRecord) => (
-      //   <img src={record.avatar} alt={record.name} style={{ width: 100, height: 100 }} />
-      // ),
-    },
+    // {
+    //   title: 'Mã chủ đề',
+    //   dataIndex: 'intent_name',
+    //   notRegex: true,
+    //   width: 200,
+    //   align: 'left',
+    //   // render: (value: any, record: IIntentRecord) => (
+    //   //   <img src={record.avatar} alt={record.name} style={{ width: 100, height: 100 }} />
+    //   // ),
+    // },
     {
       title: 'Tên chủ đề',
       dataIndex: 'intent_detail',

@@ -8,9 +8,11 @@ import { Button, Divider, Popconfirm } from 'antd';
 import React from 'react';
 import { useModel } from 'umi';
 import FormGroup from './FormGroup';
+import TableMenu from './TableMenu';
 
 const Index = () => {
   const groupModel = useModel('groups');
+  const groupmenuModel = useModel('groupmenu');
 
   const handleEdit = (record: IGroupRecord) => {
     groupModel.setVisibleForm(true);
@@ -20,6 +22,7 @@ const Index = () => {
 
   const handleDel = async (record: IGroupRecord) => {
     await groupModel.del(record?.id ?? '');
+    await groupmenuModel.getData();
   };
 
   const renderLast = (value: any, record: IGroupRecord) => (
@@ -91,6 +94,8 @@ const Index = () => {
           },
         }}
       />
+      <br />
+      <TableMenu />
     </>
   );
 };

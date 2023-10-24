@@ -87,6 +87,11 @@ const FormUser = () => {
               </Form.Item>
             </>
           )}
+          {usersModel?.edit && (
+            <Form.Item label="Mật khẩu mới" name="password">
+              <Input placeholder="Mật khẩu mới" type="password" />
+            </Form.Item>
+          )}
           <Form.Item label="Họ tên đệm" name="first_name" rules={[...rules.required]}>
             <Input placeholder="Họ tên đệm" />
           </Form.Item>

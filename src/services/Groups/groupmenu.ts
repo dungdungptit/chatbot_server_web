@@ -20,8 +20,8 @@ class Groups<T> {
     this.url = url || name;
   }
 
-  del = async (id: string) => {
-    return axios.delete(`${ip}/${this.url}`, { params: { id } });
+  del = async (payload: any) => {
+    return axios.delete(`${ip}/group_menu_by_id`, { params: payload });
   };
 
   get = async (payload: IPayload) => {
@@ -42,7 +42,7 @@ class Groups<T> {
     Object.keys(payload).forEach((key) => {
       formData.append(key, payload[key]);
     });
-    return axios.post(`${ip}/group_menu`, formData);
+    return axios.post(`${ip}/group_menu_by_id`, formData);
   };
 
   add2 = async (payload: T) => {

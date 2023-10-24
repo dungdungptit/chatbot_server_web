@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { IQuestionRecord } from '@/models/question';
+import { ip } from '@/utils/ip';
 import rules from '@/utils/rules';
 import {
   Form,
@@ -13,6 +14,7 @@ import {
   Row,
   Select,
   Tabs,
+  Divider,
 } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useModel } from 'umi';
@@ -70,8 +72,8 @@ const FormQuestion = () => {
   const handleFinishFile = async (values: any) => {
     const data = document.getElementById('formQuestionFile') as HTMLFormElement;
     const formData = new FormData(data);
-    // formData.append('intent_id', IntentId);
-    await questionModel.addFile(formData);
+    formData.append('id', IntentId);
+    await questionModel.addFileQuestion(formData);
     questionModel.setVisibleForm(false);
     questionModel.setEdit(false);
     questionModel.getData({ intent_id: IntentId });
@@ -151,6 +153,28 @@ const FormQuestion = () => {
                   </Button>
                 </Form.Item>
               </Form>
+              <Button type="primary">
+                <a
+                  download={'tep_tin_mau_cau_hoi.xlsx'}
+                  href={`${ip}/media/format/question_post/tep_tin_mau_cau_hoi.xlsx`}
+                >
+                  Tải file mẫu
+                </a>
+              </Button>
+              <br />
+              <Card title="Mẫu file">
+                <Row>
+                  <Col span={12}>
+                    <strong>Câu hỏi</strong>
+                  </Col>
+                </Row>
+                <Divider />
+                <Row>
+                  <Col span={12}>
+                    <p>Câu hỏi thuộc chủ đề(có thể để trống)</p>
+                  </Col>
+                </Row>
+              </Card>
             </TabPane>
           </Tabs>
         </Card>

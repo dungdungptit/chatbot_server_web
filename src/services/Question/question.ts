@@ -42,6 +42,9 @@ class Question<T> {
   addFile = async (payload: T) => {
     return axios.post(`${ip}/files/question`, payload);
   };
+  addFileQuestion = async (payload: T) => {
+    return axios.post(`${ip}/import_quesion/`, payload);
+  };
 
   add2 = async (payload: T) => {
     Object.keys(payload).forEach((key) => {
