@@ -158,7 +158,7 @@ const FormAnswer = () => {
               <Input type="file" name="file" />
             </Form.Item>
           ) : (
-            <Form.Item label="Câu hỏi" name="answer">
+            <Form.Item label="Câu trả lời" name="answer">
               <Input.TextArea
                 showCount
                 maxLength={500}

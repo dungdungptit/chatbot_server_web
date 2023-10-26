@@ -73,7 +73,7 @@ const Index = () => {
     <>
       <TableBase
         modelName={'groups'}
-        title="Quản lý danh sách người dùng"
+        title="Quản lý danh sách nhóm người dùng"
         columns={columns}
         hascreate={true}
         formType={'Drawer'}
